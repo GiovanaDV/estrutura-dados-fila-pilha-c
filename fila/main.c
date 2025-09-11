@@ -1,12 +1,3 @@
-/*  Criar um menu ok
-1. cadastrar paciente ok
-2. chamar paciente
-3. lista de pacientes
-4. sair
- 
-Cada paciente tem uma senha e será chamado pela sua senha;
-A cada chamada o primeiro paciente é removido da fila*/
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -59,49 +50,4 @@ void mostrar_fila() {
             printf("[%d - %s] ", fila[idx].senha, fila[idx].nome);
         }
     }
-}
-
-int main() {
-    int opcao;
-    char nome[50];
-    Paciente paciente;
-
-    do {
-        printf("\nMenu:\n");
-        printf("1. Cadastrar paciente\n");
-        printf("2. Chamar paciente\n");
-        printf("3. Lista de pacientes\n");
-        printf("4. Sair\n");
-        printf("Escolha uma opcao: ");
-        scanf("%d", &opcao);
-
-        switch (opcao) {
-            case 1:
-            printf("\n=== Cadastrar Paciente ===\n");
-            printf("Digite o nome do paciente: ");
-            scanf("%s", nome);
-
-            enqueque(nome);
-            printf("Paciente %s cadastrado com a senha %d\n", nome, fila[fim].senha);
-            break;
-            case 2:
-            printf("\n=== Chamando Paciente ===\n");
-            paciente = dequeque();
-            if (paciente.senha != -1) {
-                printf("Paciente chamado: %s (Senha: %d)\n", paciente.nome, paciente.senha);
-            }
-                break;
-            case 3:
-            mostrar_fila();          
-                break;
-            case 4:
-                printf("Saindo...\n");
-                break;
-            default:
-                printf("Opcao invalida. Tente novamente.\n");
-        }
-    } while (opcao != 4);
-
-    
-    return 0;
 }
