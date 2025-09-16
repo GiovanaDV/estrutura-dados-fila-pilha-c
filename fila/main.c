@@ -51,3 +51,43 @@ void mostrar_fila() {
         }
     }
 }
+
+int main() {
+    int opcao;
+
+    do {
+        printf("Escolha uma opção:\n");
+        printf("1. Adicionar paciente\n");
+        printf("2. Atender paciente\n");
+        printf("3. Listar pacientes\n");
+        printf("4. Sair\n");
+        printf("Escolha: ");
+        scanf("%d", &opcao);
+
+        switch (opcao) {
+            case 1:
+                char nome[50];
+                printf("Nome do(a) paciente: ");
+                scanf("%s", nome);
+                printf("Cadastrando paciente %s...\n", nome);
+                enqueque(nome);
+                break;
+            case 2:
+                printf("Atendendo paciente...\n");
+                Paciente p = dequeque();
+                if (p.senha != -1) {
+                    printf("Paciente %s com senha %d atendido(a)\n", &p.nome, p.senha);
+                }
+                break;
+            case 3:
+                mostrar_fila();
+                break;
+            case 4: break;
+            default:
+                printf("Opção inválida\n");
+        }
+
+    } while (opcao != 4);
+    printf("Saindo...\n");
+    return 0;
+}
